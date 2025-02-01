@@ -1,0 +1,144 @@
+<!-- views/login.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Your Site</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .form-card {
+        animation: fadeIn 0.5s ease-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4"
+  >
+    <div class="form-card w-full max-w-md">
+      <!-- Logo/Brand -->
+      <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold text-indigo-600 dark:text-indigo-400">
+          YourBrand
+        </h1>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">Welcome back!</p>
+      </div>
+
+      <!-- Form Card -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
+        <form action="/user/login" method="POST" class="space-y-6">
+          <!-- Username Input -->
+          <div>
+            <label
+              for="username"
+              class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2"
+            >
+              Username
+            </label>
+            <div class="relative">
+              <input
+                type="text"
+                id="username"
+                name="username"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
+                placeholder="Enter your username"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Password Input -->
+          <div>
+            <label
+              for="password"
+              class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2"
+            >
+              Password
+            </label>
+            <div class="relative">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Remember Me & Forgot Password -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                id="remember"
+                name="remember"
+                class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+              />
+              <label
+                for="remember"
+                class="ml-2 block text-sm text-gray-700 dark:text-gray-300"
+              >
+                Remember me
+              </label>
+            </div>
+            <a
+              href="/forgot-password"
+              class="text-sm text-indigo-600 hover:text-indigo-500 dark:text-indigo-400"
+            >
+              Forgot password?
+            </a>
+          </div>
+
+          <!-- Login Button -->
+          <button
+            type="submit"
+            class="w-full py-3 px-4 border border-transparent rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200 font-medium"
+          >
+            Sign In
+          </button>
+        </form>
+
+        <!-- Sign Up Link -->
+        <div class="text-center mt-6">
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            Don't have an account?
+            <a
+              href="/signup"
+              class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400"
+            >
+              Sign up
+            </a>
+          </p>
+        </div>
+
+        <% if (locals.error) { %>
+        <div
+          class="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded"
+        >
+          <%= error %>
+        </div>
+        <% } %>
+      </div>
+    </div>
+
+    <script>
+      // Optional: Add password visibility toggle
+      function togglePassword() {
+        const password = document.getElementById("password");
+        password.type = password.type === "password" ? "text" : "password";
+      }
+    </script>
+  </body>
+</html>
