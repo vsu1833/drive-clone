@@ -95,7 +95,7 @@
         <p id="modalFileName" class="mb-4"></p>
         <!-- Final Upload Form -->
         <!-- Update the action attribute to point to your backend endpoint -->
-        <form action="/upload-file" method="post" enctype="multipart/form-data">
+        <form action="/upload" method="post" enctype="multipart/form-data">
           <!-- In a real implementation, you would send the actual file (via FormData, etc.) -->
           <input type="hidden" name="fileName" id="modalHiddenFileName" />
           <button
@@ -116,7 +116,7 @@
 
     <!-- Flowbite JS -->
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.js"></script>
-    <script src="/path/to/supabase.config.js"></script>
+    <script src="/config/supabase.config.js"></script>
     <script>
       // Trigger the hidden file input when the main upload button is clicked
       function triggerFileInput() {
@@ -192,17 +192,17 @@
       }
 
       // Function to upload file to Supabase
-      const uploadFile = async (file) => {
-        const { data, error } = await supabase.storage
-          .from("drive_files")
-          .upload(`uploads/${file.name}`, file, { upsert: true });
+      // const uploadFile = async (file) => {
+      //   const { data, error } = await supabase.storage
+      //     .from("drive_files")
+      //     .upload(`uploads/${file.name}`, file, { upsert: true });
 
-        if (error) {
-          console.error("Upload error:", error);
-        } else {
-          console.log("File uploaded:", data);
-        }
-      };
+      //   if (error) {
+      //     console.error("Upload error:", error);
+      //   } else {
+      //     console.log("File uploaded:", data);
+      //   }
+      // };
     </script>
   </body>
 </html>

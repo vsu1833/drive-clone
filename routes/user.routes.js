@@ -1,5 +1,8 @@
 const express = require('express');
 
+const { uploadFile } = require('../services/upload.service');
+const fileUpload = require('express-fileupload');
+
 const router = express.Router();
 // userModel
 
@@ -23,6 +26,7 @@ router.get('/register',(req,res)=>
 {
     res.render('register');
 });
+
 
 
 
